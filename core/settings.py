@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #local apps 
     "user_engine",
+    "file_engine",
 ]
 
 MIDDLEWARE = [
