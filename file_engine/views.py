@@ -9,18 +9,6 @@ def Home(request):
     return render(request, 'file_engine/home.html')
 
 
-# def upload_file(request):
-#     if request.method == "POST":
-#         form = FileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             print('file was upload successfully')
-#             return redirect('home')
-#         else:
-#             print(form.errors)
-#     form = FileForm()
-#     context = {'form':form,}
-#     return render(request, 'file_engine/upload_file.html',context)
 
 
 def upload_file(request):
