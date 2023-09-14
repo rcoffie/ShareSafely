@@ -7,3 +7,10 @@ class FileForm(forms.ModelForm):
     class Meta:
         model = File 
         fields = ('name','user','file','description')
+
+
+class EditFileForm(forms.ModelForm):
+
+    class Meta:
+        model = File 
+        fields = ('file',)
