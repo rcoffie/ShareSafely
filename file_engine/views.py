@@ -32,6 +32,9 @@ def upload_file(request):
 
 
 
+
+
+
 def edit_file(request, id):
     file = get_object_or_404(File, id=id)
     form = EditFileForm(request.POST, request.FILES, instance=file)
