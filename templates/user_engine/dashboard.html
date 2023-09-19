@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <table class="table align-middle mb-0 bg-white">
+            <thead class="bg-light">
+              <tr>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Position</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% if files %}
+                {% for each in files %}
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <img
+                        src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                        alt=""
+                        style="width: 45px; height: 45px"
+                        class="rounded-circle"
+                        />
+                    <div class="ms-3">
+                      <p class="fw-bold mb-1">{{ each.name|title}}</p>
+                      <p class="text-muted mb-0">john.doe@gmail.com</p>
+                    </div>
+                  </div>
+                </td>
+                {% if each.file %}
+                <td>
+                  <p class="fw-normal mb-1"> <a href="{{each.file.url}}" target="_blank"> view</a> </p>
+                 
+                </td>
+                {% endif %}
+                <td>
+                  <span class="badge badge-success rounded-pill d-inline">Active</span>
+                </td>
+                <td>Senior</td>
+                <td>
+                  <a href="{% url 'edit_file' each.id %}" type="button" class="btn btn-link btn-sm btn-rounded">
+                    Edit
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+              {% endif %}
+              
+            
+            </tbody>
+          </table>
+        
+    </div>
+</div>
+
+{% endblock %}
