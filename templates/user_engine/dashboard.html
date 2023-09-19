@@ -8,9 +8,9 @@
             <thead class="bg-light">
               <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Title</th>
-                <th>Actions</th>
+                <th>File Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -24,14 +24,14 @@
                   <div class="d-flex align-items-center">
                     
                     <div class="ms-3">
-                      <a href="{% url 'edit_file' each.id %}" class="fw-bold mb-1 text-decoration-none">{{ each.name|title}}</p>
+                      <a href="{{each.file.url}} " target="_blank" class="fw-bold mb-1 text-decoration-none">{{ each.name|title}}</p>
                       
                     </div>
                   </div>
                 </td>
                 {% if each.file %}
                 <td>
-                  <p class="fw-normal mb-1 "> <a href="{{each.file.url}} " target="_blank" class="text-decoration-none"> view</a> </p>
+                  <p class="fw-normal mb-1 "> <a href="{% url 'edit_file' each.id %}"  class="text-decoration-none"> <i class="bi bi-pencil-square"></i> </a> </p>
                  
                 </td>
                 {% endif %}
@@ -39,7 +39,7 @@
                 <td>
                   
                   <a href="{% url 'delete_file' each.id %}" onclick="return confirm('Are you sure?')"type="button" class="btn btn-link btn-sm btn-rounded text-decoration-none">
-                    Delete
+                    <i class="bi bi-trash"></i>
                   </a>
                 </td>
               </tr>
