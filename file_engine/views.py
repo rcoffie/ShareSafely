@@ -16,18 +16,23 @@ def upload_file(request):
     if request.method == "POST" or None:
         form = FileForm(request.POST or None, request.FILES)
         if form.is_valid():
-            form.save(commit=False)
+            file = form.save(commit=False)
             # print(form)
             # print("valid form")
+            file.user = request.user
             form.save()
-            return render(request,"file_engine/upload_file.html",{'form':form})
+            return redirect("dashboard")
         else:
             # print(form)
             # print("invalid form")
             # print(form.errors)
             return render(request, "file_engine/upload_file.html",{'form':form})
     else:
+        form = FileForm(request.POST or None, request.FILES) 
         return render(request, "file_engine/upload_file.html",{'form':form})
+
+
+
 
 
 
@@ -45,3 +50,10 @@ def edit_file(request, id):
             return render(request, "file_engine/edit_file.html",{'form':form})
     else:
         return render(request, "file_engine/edit_file.html",{'form':form})
+
+
+
+def delete_file(request, id):
+    file = get_object_or_404(File, id=id)
+    file.delete()
+    return redirect("dashboard")

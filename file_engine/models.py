@@ -16,8 +16,8 @@ class Time(models.Model):
 class File(Time):
     name = models.CharField(max_length=100)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    file = models.FileField(blank=True, null=True, upload_to="documents/%Y/%m/%d", validators=[validate_file_extension])
-    description = models.CharField(max_length=200)
+    file = models.FileField(blank=False, null=False, upload_to="documents/%Y/%m/%d", validators=[validate_file_extension])
+    description = models.CharField(max_length=200, blank=True, null=True)
 
     def __str__(self):
 
