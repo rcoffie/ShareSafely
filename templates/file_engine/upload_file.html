@@ -2,7 +2,9 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="contain">
+
+<div class="container">
+    {% include 'partials/alert.html' %}
     <div class="row">
         <div class="col-md-8 m-auto">
 
@@ -11,15 +13,7 @@
                 {{form|crispy}}
                 <button class="btn btn-primary my-4" type="submit">Submit</button>
 
-      {% if form.errors %}
-       {% for field in form %}
-           {% for error in field.errors %} 
-              <div class="alert alert-danger">
-                   <strong>{{ error|escape }}</strong>
-              </div>
-           {% endfor %}
-       {% endfor %}
-       {% endif %}
+      
             </form>
 
         </div>
