@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect, get_object_or_404
 from file_engine.models import File 
 from file_engine.forms import FileForm, EditFileForm
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required 
 # Create your views here.
 
 def Home(request):
@@ -11,7 +11,7 @@ def Home(request):
 
 
 
-
+@login_required(login_url="login")
 def upload_file(request):
     form = FileForm(request.POST or None, request.FILES) 
     if request.method == "POST" or None:
