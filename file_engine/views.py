@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from file_engine.models import File 
 from file_engine.forms import FileForm, EditFileForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -21,6 +22,7 @@ def upload_file(request):
             # print("valid form")
             file.user = request.user
             form.save()
+            messages.success(request, "file uploaded successfully")
             return redirect("dashboard")
         else:
             # print(form)
@@ -45,6 +47,7 @@ def edit_file(request, id):
         if form.is_valid():
             form.save(commit=False)
             form.save()
+            messages.info(request, "file updated successfully")
             return render(request,"file_engine/edit_file.html",{'form':form})
         else:
             return render(request, "file_engine/edit_file.html",{'form':form})
@@ -56,4 +59,5 @@ def edit_file(request, id):
 def delete_file(request, id):
     file = get_object_or_404(File, id=id)
     file.delete()
+    messages.warning(request, "file deleted successfully ")
     return redirect("dashboard")
