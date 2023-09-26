@@ -1,19 +1,20 @@
-from django.shortcuts import render,redirect, get_object_or_404
-from file_engine.models import File 
-from file_engine.forms import FileForm, EditFileForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required 
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
+
+from file_engine.forms import EditFileForm, FileForm
+from file_engine.models import File
+
 # Create your views here.
 
+
 def Home(request):
-
-    return render(request, 'file_engine/home.html')
-
+    return render(request, "file_engine/home.html")
 
 
 @login_required(login_url="login")
 def upload_file(request):
-    form = FileForm(request.POST or None, request.FILES) 
+    form = FileForm(request.POST or None, request.FILES)
     if request.method == "POST" or None:
         form = FileForm(request.POST or None, request.FILES)
         if form.is_valid():
@@ -28,15 +29,10 @@ def upload_file(request):
             # print(form)
             # print("invalid form")
             # print(form.errors)
-            return render(request, "file_engine/upload_file.html",{'form':form})
+            return render(request, "file_engine/upload_file.html", {"form": form})
     else:
-        form = FileForm(request.POST or None, request.FILES) 
-        return render(request, "file_engine/upload_file.html",{'form':form})
-
-
-
-
-
+        form = FileForm(request.POST or None, request.FILES)
+        return render(request, "file_engine/upload_file.html", {"form": form})
 
 
 def edit_file(request, id):
@@ -48,12 +44,11 @@ def edit_file(request, id):
             form.save(commit=False)
             form.save()
             messages.info(request, "file updated successfully")
-            return render(request,"file_engine/edit_file.html",{'form':form})
+            return render(request, "file_engine/edit_file.html", {"form": form})
         else:
-            return render(request, "file_engine/edit_file.html",{'form':form})
+            return render(request, "file_engine/edit_file.html", {"form": form})
     else:
-        return render(request, "file_engine/edit_file.html",{'form':form})
-
+        return render(request, "file_engine/edit_file.html", {"form": form})
 
 
 def delete_file(request, id):
