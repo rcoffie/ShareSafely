@@ -66,3 +66,9 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, "user_engine/signup.html", {"form": form})
+
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
