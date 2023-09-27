@@ -40,7 +40,7 @@
     <!-- Collapsible wrapper -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Navbar brand -->
-      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+      <a class="navbar-brand mt-2 mt-lg-0" href="{% url 'home' %}">
         <img
           src="https://logodix.com/logo/1022861.png"
           height="15"
@@ -51,14 +51,9 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Team</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Projects</a>
-        </li>
+        
       </ul>
       <!-- Left links -->
     </div>
@@ -97,13 +92,13 @@
           aria-labelledby="navbarDropdownMenuAvatar"
         >
           <li>
-            <a class="dropdown-item" href="#">My profile</a>
+            <a class="dropdown-item" href="{% url 'dashboard' %}"> <strong> <i class="bi bi-speedometer"></i> Dashboard</strong> </a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Settings</a>
+            <a class="dropdown-item" href="#"> <strong> <i class="bi bi-person-lines-fill"></i> Profile</strong> </a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" href="{% url 'logout_view' %}"> <strong> <i class="bi bi-x-circle"></i> Logout</strong> </a>
           </li>
         </ul>
       </div>
@@ -115,10 +110,10 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <a class="nav-link" href="{% url 'login' %}"> <strong> <i class="bi bi-door-open"></i> Login</strong>  </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">SignUp</a>
+          <a class="nav-link" href="{% url 'signup' %}"> <strong> <i class="bi bi-person-add"></i> SignUp</strong> </a>
         </li>
         
       </ul>
