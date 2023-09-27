@@ -34,25 +34,32 @@ def upload_file(request):
         form = FileForm(request.POST or None, request.FILES)
         return render(request, "file_engine/upload_file.html", {"form": form})
 
-
+@login_required(login_url="login")
 def edit_file(request, id):
     file = get_object_or_404(File, id=id)
-    form = EditFileForm(request.POST, request.FILES, instance=file)
-    if request.method == "POST":
+    print(file.user)
+    if file.user == request.user:
         form = EditFileForm(request.POST, request.FILES, instance=file)
-        if form.is_valid():
-            form.save(commit=False)
-            form.save()
-            messages.info(request, "file updated successfully")
-            return render(request, "file_engine/edit_file.html", {"form": form})
+        if request.method == "POST":
+            form = EditFileForm(request.POST, request.FILES, instance=file)
+            if form.is_valid():
+                form.save(commit=False)
+                form.save()
+                messages.info(request, "file updated successfully")
+                return render(request, "file_engine/edit_file.html", {"form": form})
+            else:
+                return render(request, "file_engine/edit_file.html", {"form": form})
         else:
             return render(request, "file_engine/edit_file.html", {"form": form})
     else:
-        return render(request, "file_engine/edit_file.html", {"form": form})
+        return redirect('home')
 
-
+@login_required(login_url="login")
 def delete_file(request, id):
     file = get_object_or_404(File, id=id)
-    file.delete()
-    messages.warning(request, "file deleted successfully ")
+    if file.user == request.user:
+        file.delete()
+        messages.warning(request, "file deleted successfully ")
+    else:
+        return redirect('home')
     return redirect("dashboard")
