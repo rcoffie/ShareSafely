@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'sharesafelyCLD'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B8C23644E39F4A7482CCD33FE150E9D3 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8DC6F03FCAA048528EC58F875C769470 }}
