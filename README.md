@@ -7,18 +7,20 @@ More details Details on [ShareSafely](https://github.com/rcoffie/cloud-projects/
 
 ## Homepage Screenshot
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+![home](https://github.com/rcoffie/ShareSafely/assets/34107104/23cc088e-3f00-4184-9cf7-03c2e25b7efa)
 
 
 ## This Web App was build with [Django](https://www.djangoproject.com/) on the backend 
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+![django](https://github.com/rcoffie/ShareSafely/assets/34107104/3be3d05a-b211-49f9-9898-4e7b9bff3735)
 
 
 ## This Web App was build with [Bootstrap](https://getbootstrap.com/) on the Frontend
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
+![bootstrap](https://github.com/rcoffie/ShareSafely/assets/34107104/46bcbd31-222c-45f4-a1f8-862574997859)
 
 
 ## Development
