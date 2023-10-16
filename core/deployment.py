@@ -21,8 +21,8 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 
 # conn_str = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
@@ -49,15 +49,15 @@ DATABASES = {
 
 
 
-DEFAULT_FILE_STORAGE = 'core.azure_storage.AzureMediaStorage'
-STATICFILES_STORAGE = 'core.azure_storage.AzureStaticStorage'
+# DEFAULT_FILE_STORAGE = 'core.azure_storage.AzureMediaStorage'
+# STATICFILES_STORAGE = 'core.azure_storage.AzureStaticStorage'
 
-AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
-AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')
-AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+# AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
+# AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')
+# AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
 
-STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/static/'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/media/'
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+# MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/media/'
+# MEDIA_ROOT = BASE_DIR / 'mediafiles'
